@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buffet Setup Drag-and-Drop</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h2>Buffet Setup Practice Activity</h2>
+  <div id="instructions">
+    Drag each item into its correct location along the buffet (left to right as a guest would experience it).
+  </div>
+  <div id="narrator-info">🎙️ Narrator: <span id="narrator-name">Random</span></div>
+  <label for="voice-select">Choose Your Narrator:</label>
+  <select id="voice-select">
+    <option value="">🎲 Random Voice</option>
+  </select>
+  <button onclick="playVoiceover()">🔊 Play Instructions</button>
+  <div id="status-bar">
+    <div id="time-score-row">
+      <div id="timer">Time: 0s</div>
+      <div id="highscore">...</div>
+      <div id="lifetime-stats"></div>
+    </div>
+    <div id="feedback-row">
+      <div id="message"></div>
+      <div id="completion-screen"></div>
+      <div id="round-stats"></div>
+    </div>
+  </div>
+  <div id="selected-box">👆 Selected: <span id="selected-item-name">None</span></div> <!-------------->
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+  <div id="buffet-layout">
+    <div class="zone" data-accept="plates"><div class="zone-label">Plates</div></div>
+    <div class="zone" data-accept="bread"><div class="zone-label">Bread</div></div>
+    <div class="zone" data-accept="salad"><div class="zone-label">Salad</div></div>
+    <div class="zone" data-accept="sides"><div class="zone-label">Sides</div></div>
+    <div class="zone" data-accept="main"><div class="zone-label">Main Course</div></div>
+    <div class="zone" data-accept="toppings"><div class="zone-label">Toppings</div></div>
+    <div class="zone" data-accept="desserts"><div class="zone-label">Desserts</div></div>
+    <div class="zone" data-accept="beverages"><div class="zone-label">Beverages</div></div>
+  </div>
+  <div id="items"></div>
+  <button id="reset-button" onclick="location.reload()">Start Over</button>
+  <audio id="correct-sound" src="correct.mp3"></audio>
+  <audio id="wrong-sound" src="incorrect.mp3"></audio>
+  <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;"></canvas>
+  <script src="data.js"></script>
+  <script src="logic.js"></script>
+</body>
+</html>
